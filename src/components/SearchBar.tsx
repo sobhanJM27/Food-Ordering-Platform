@@ -5,6 +5,7 @@ import { z } from "zod";
 import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { useEffect } from "react";
 
 const formSchema = z.object({
   searchQuery: z.string({
@@ -15,14 +16,18 @@ const formSchema = z.object({
 export type SearchForm = z.infer<typeof formSchema>;
 
 type Props = {
+  searchQuery?: string;
   onSubmit: (formData: SearchForm) => void;
   placeHolder: string;
   onReset?: () => void;
 };
 
-const SearchBar = ({ onSubmit, placeHolder, onReset }: Props) => {
+const SearchBar = ({ searchQuery, onSubmit, placeHolder, onReset }: Props) => {
   const form = useForm<SearchForm>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      searchQuery: searchQuery || "",
+    },
   });
 
   const handleReset = () => {
@@ -35,11 +40,15 @@ const SearchBar = ({ onSubmit, placeHolder, onReset }: Props) => {
     }
   };
 
+  useEffect(() => {
+    
+  })
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={`flex items-center flex-1 gap-3 justify-between flex-row border-2 rounded-full p-3 mx-5 ${
+        className={`flex items-center gap-3 justify-between flex-row border-2 rounded-full p-3 mx-5 ${
           form.formState.errors.searchQuery && "border-red-500"
         }`}
       >

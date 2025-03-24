@@ -60,8 +60,15 @@ const ManageRestaurantForm = ({ restaurant, onSave, isLoading }: Props) => {
   const form = useForm<restaurantFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      restaurantName: "",
+      city: "",
+      country: "",
+      deliveryPrice: 0,
+      estimatedDeliveryTime: 0,
       cuisines: [],
       menuItems: [{ name: "", price: 0 }],
+      imageUrl: "",
+      imageFile: undefined,
     },
   });
 
@@ -118,7 +125,7 @@ const ManageRestaurantForm = ({ restaurant, onSave, isLoading }: Props) => {
       formData.append(`imageFile`, formDataJson.imageFile);
     }
 
-    onSave(formData);
+    onSave(formData);;
   };
 
   return (

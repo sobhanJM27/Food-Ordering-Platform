@@ -131,8 +131,6 @@ export const useUpdateMyUser = () => {
   return {
     updateUser,
     isPending,
-    isSuccess,
     isError,
-    reset,
   };
 };

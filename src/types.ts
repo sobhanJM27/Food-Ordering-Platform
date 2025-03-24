@@ -8,10 +8,10 @@ export type User = {
 };
 
 export type MenuItem = {
-    _id: string;
-    name: string;
-    price: number;
-}
+  _id: string;
+  name: string;
+  price: number;
+};
 
 export type Restaurant = {
   _id: string;
@@ -25,4 +25,41 @@ export type Restaurant = {
   menuItems: MenuItem[];
   imageUrl: string;
   lastUpdated: string;
+};
+
+export type RestuarantSearchResponse = {
+  data: Restaurant[];
+  pagination: {
+    total: number;
+    page: number;
+    pages: number;
+  };
+};
+
+export type OrderStatus =
+  | "placed"
+  | "paid"
+  | "inProgress"
+  | "outForDelivery"
+  | "delivered";
+
+export type Order = {
+  _id: string;
+  restaurant: Restaurant;
+  user: User;
+  cartItems: {
+    menuItemId: string;
+    name: string;
+    quantity: string;
+  }[];
+  deliveryDetails: {
+    name: string;
+    addressLine1: string;
+    city: string;
+    email: string;
+  };
+  totalAmount: number;
+  status: OrderStatus;
+  createdAt: string;
+  restaurantId: string;
 };
