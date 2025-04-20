@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# React + React Query + Auth0 + TypeScript + Vite + Tailwind
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -48,4 +48,10 @@ export default tseslint.config({
   },
 })
 ```
-# FoodOrderingPlatform
+
+### Start the app
+
+```shell
+npm run dev
+```
+
